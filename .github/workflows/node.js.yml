@@ -27,5 +27,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+
+    - name: Run ESLint
+      run: npx eslint .
+    - name: Run TypeScript checks
+      run: npx tsc --noEmi
+        
+    
     - run: npm run build --if-present
     - run: npm test
